@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Styled Header{% endblock title %}</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4f1d8;
+        }
+
+        .cta-button {
+            background-color: white;
+            color: #4CAF50;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        {% block style %}
+        {% endblock style %}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Car Show</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            {% if logged_in %}
+            <a href ={% url 'home' %}>Logout </a>
+            {% else %}
+            <a href = {% url 'login'%}>Signin </a>
+            {% endif %}
+        </nav>
+        
+    </header>
+    {% block body %}
+    {% endblock body %}
+</body>
+</html>

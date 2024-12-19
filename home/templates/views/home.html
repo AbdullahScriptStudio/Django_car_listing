@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Enthusiast Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #444;
+            padding: 10px;
+        }
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+        }
+        .cars-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .car-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: calc(33% - 20px);
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .car-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    <div>
+        {{ message }}
+    </div>
+    {% endfor%}
+    {% endif %}
+    
+    <header>
+        <h1>Car Enthusiast Hub</h1>
+        <p>Your one-stop destination for car lovers!</p>
+    </header>
+
+    <nav>
+        <a href="#featured">Featured Cars</a>
+        <a href="#categories">Categories</a>
+        <a href="#gallery">Gallery</a>
+        {% if logged_in %}
+            <a href={% url 'listing' %}>Listing</a>
+        {% else %}
+        <a href="#gallery">login</a>
+        {% endif %}
+    </nav>
+    <h1>Hi {{request.user.username}}</h1>
+    <section id="featured">
+        <h2>Featured Cars</h2>
+        <div class="cars-section">
+            <div class="car-card">
+                <img src="https://th.bing.com/th/id/OIP.09AatEzlmeQab0BbvOLitQHaE8?pid=ImgDet&w=185&h=123&c=7&dpr=1.3" alt="Car 1">
+                <h3>Classic Mustang</h3>
+                <p>A true American muscle car.</p>
+            </div>
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1669254583989-51695d247384?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8THV4dXJ5JTIwU2VkYW58ZW58MHx8MHx8fDA%3D" alt="Car 2">
+                <h3>Luxury Sedan</h3>
+                <p>Elegance meets performance.</p>
+            </div>
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1704951547872-944a3b505b67?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFNVVnxlbnwwfHwwfHx8MA%3D%3D"https://via.placeholder.com/300x200.png?text=Car+3" alt="Car 3">
+                <h3>Sporty SUV</h3>
+                <p>Adventure-ready and stylish.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="categories">
+        <h2>Car Categories</h2>
+        <p>Explore classic cars, modern sedans, rugged SUVs, and more!</p>
+    </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="cars-section">
+            <img src="https://via.placeholder.com/300x200.png?text=Gallery+Image+1" alt="Gallery 1">
+            <img src="https://via.placeholder.com/300x200.png?text=Gallery+Image+2" alt="Gallery 2">
+            <img src="https://via.placeholder.com/300x200.png?text=Gallery+Image+3" alt="Gallery 3">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Car Enthusiast Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

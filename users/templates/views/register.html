@@ -1,0 +1,9 @@
+{% load static %}
+<main>
+    <form action = "" method ="post">
+        <img src="{% static 'images\logo.jpg' %}" alt="Logo nai mila">
+        {{register_form}}
+        {% csrf_token %}
+        <button type = "submit">Register</button>
+    </form>
+</main>
