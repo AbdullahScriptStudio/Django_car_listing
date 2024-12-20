@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLR+KiX7f9HH4v6IG/Moa/PP9k+QNpAM/a81Cwra7w" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Hello World</h1>
+        {% load static %}
+        {% load crispy_forms_tags %}
+
+        <form action = "" method="post" enctype="multipart/form-data" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ Listings_Form }}
+            </div>
+        </form>
+
+
+        <form action = "" method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+            {{ Location_Form }}
+        
+            </div>
+        </form>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        <h1 class="text-center mt-5">After Form</h1>
+    </div>
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-8zWfyUQlbqzCDe1cV5COK+/yK9MJ0y8jFqLNLchqxg3ekbpyOh8xIxlfvtHyF4iA" crossorigin="anonymous"></script>
+</body>
+</html>

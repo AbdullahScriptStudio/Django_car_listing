@@ -76,8 +76,7 @@
 
     <nav>
         <a href="#featured">Featured Cars</a>
-        <a href="#categories">Categories</a>
-        <a href="#gallery">Gallery</a>
+        <a href='{% url 'list' %}'>List your Car</a>
         {% if logged_in %}
             <a href={% url 'listing' %}>Listing</a>
         {% else %}

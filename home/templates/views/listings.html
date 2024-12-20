@@ -44,22 +44,6 @@
             color: #d4f1d8;
         }
 
-        .cta-button {
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            border: 1px solid black;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .cta-button:hover {
-            background-color: white;
-            color: black;
-        }
-
         main {
             padding: 50px 10%;
             text-align: center;
@@ -91,7 +75,7 @@
             color: black;
         }
 
-        /* Unique Styling for Car Listing Cards */
+        /* Styling for Car Listing Cards */
         .car-listing-card {
             background-color: #f4f4f4;
             width: 33%;
@@ -101,6 +85,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
             display: inline-block;
+            position: relative;
         }
 
         .car-listing-card:hover {
@@ -155,6 +140,33 @@
         .view-more-button:hover {
             background-color: #777;
         }
+
+        /* Dealer Information Section */
+        .dealer-info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .dealer-info img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .dealer-info span {
+            font-size: 14px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -191,14 +203,21 @@
                 <p><strong>Mileage:</strong> {{ listing.milage }} miles</p>
                 <p><strong>Location:</strong> {{ listing.location.state }}</p>
                 <p><strong>Transmission:</strong> {{ listing.transmission }}</p>
-                <p><strong></strong> {{ listing.description }}</p>
+                <p>{{ listing.description }}</p>
             </div>
             <div class="car-listing-footer">
                 <button class="view-more-button">View More</button>
             </div>
+            <!-- Dealer Information -->
+            <div class="dealer-info">
+                <img src="{{ listing.dealer.profile_pic }}" alt="Dealer Picture">
+                <span>{{ listing.dealer.user.username }}</span>
+                {% if listing.dealer.user == request.user %}
+                <a href ='{% url 'home' %}' >Edit</a>
+                {% endif %}
+            </div>
         </div>
         {% endfor %}
     </div>
-
 </body>
 </html>
